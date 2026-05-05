@@ -586,7 +586,19 @@ namespace AutoHook.Resources.Localization {
                 return ResourceManager.GetString("AutoStartFishingHelpText", resourceCulture);
             }
         }
-        
+
+        internal static string LockMovementWhileFishing {
+            get {
+                return ResourceManager.GetString("LockMovementWhileFishing", resourceCulture);
+            }
+        }
+
+        internal static string LockMovementWhileFishingHelp {
+            get {
+                return ResourceManager.GetString("LockMovementWhileFishingHelp", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Bait.
         /// </summary>

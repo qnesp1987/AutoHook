@@ -49,6 +49,8 @@ public class Configuration : IPluginConfiguration
 
     [DefaultValue(false)] public bool AutoStartFishing = false;
 
+    [DefaultValue(false)] public bool LockMovementWhileFishing = false;
+
     [DefaultValue(false)] public bool DtrBarEnabled = false;
 
     [DefaultValue(false)] public bool DtrPresetBarEnabled = false;

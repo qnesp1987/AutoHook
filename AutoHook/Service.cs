@@ -18,6 +18,7 @@ public class Service
     public static Configuration Configuration { get; set; } = null!;
     public static WindowSystem WindowSystem { get; } = new(PluginName);
     public static SeTugType TugType { get; set; } = null!;
+    public static MovementLock MovementLock { get; set; } = null!;
     public static ClientLanguage Language { get; set; }
 
     public static string _status = @"";

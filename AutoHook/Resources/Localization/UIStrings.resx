@@ -1070,6 +1070,12 @@ Check the Guide Tab for Guides.</value>
   <data name="AutoStartFishingHelpText" xml:space="preserve">
     <value>Automatically casts line when not fishing. Disable if you keep AutoHook on at all times.</value>
   </data>
+  <data name="LockMovementWhileFishing" xml:space="preserve">
+    <value>Lock movement while fishing</value>
+  </data>
+  <data name="LockMovementWhileFishingHelp" xml:space="preserve">
+    <value>Blocks WASD/arrow keys and controller movement while a fishing line is in the water.</value>
+  </data>
   <data name="SwapTreeNodeButtons" xml:space="preserve">
     <value>Swap Tree Node to Buttons</value>
   </data>

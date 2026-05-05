@@ -66,6 +66,8 @@ public class TabSettings : BaseTab
 
         DrawUtil.Checkbox(UIStrings.AutoStartFishing, ref Service.Configuration.AutoStartFishing, UIStrings.AutoStartFishingHelpText);
 
+        DrawUtil.Checkbox(UIStrings.LockMovementWhileFishing, ref Service.Configuration.LockMovementWhileFishing, UIStrings.LockMovementWhileFishingHelp);
+
         DrawUtil.Checkbox(UIStrings.DontHideExtraAutoCast, ref Service.Configuration.DontHideOptionsDisabled);
 
         DrawUtil.Checkbox(UIStrings.Hide_Tab_Description, ref Service.Configuration.HideTabDescription);

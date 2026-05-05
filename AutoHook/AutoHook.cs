@@ -59,6 +59,7 @@ public class AutoHook : IDalamudPlugin
         Plugin = this;
         Service.BaitManager = new BaitManager();
         Service.TugType = new SeTugType(Svc.SigScanner);
+        Service.MovementLock = new MovementLock();
         Svc.PluginInterface.UiBuilder.Draw += Service.WindowSystem.Draw;
         Svc.PluginInterface.UiBuilder.OpenConfigUi += OnOpenConfigUi;
         Svc.PluginInterface.UiBuilder.OpenMainUi += OnOpenConfigUi;
@@ -205,6 +206,7 @@ public class AutoHook : IDalamudPlugin
         _pluginUi.Dispose();
         _autoGig.Dispose();
         HookManager.Dispose();
+        Service.MovementLock.Dispose();
         Service.Save();
         Svc.PluginInterface.UiBuilder.Draw -= Service.WindowSystem.Draw;
         Svc.PluginInterface.UiBuilder.OpenConfigUi -= OnOpenConfigUi;

@@ -85,6 +85,7 @@ public partial class FishingManager : IDisposable
         Svc.Chat.CheckMessageHandled -= OnMessageDelegate;
         _useActionHook?.Disable();
         UpdateCatch?.Disable();
+        Service.MovementLock?.Unlock();
     }
 
     public void StartFishing()
@@ -192,9 +193,20 @@ public partial class FishingManager : IDisposable
 
     private void OnFrameworkUpdate(IFramework _)
     {
-        if (!Service.Configuration.PluginEnabled || !Svc.ClientState.IsLoggedIn || Svc.Objects.LocalPlayer == null || !Service.BaitManager.IsValid) return;
+        if (!Service.Configuration.PluginEnabled || !Svc.ClientState.IsLoggedIn || Svc.Objects.LocalPlayer == null || !Service.BaitManager.IsValid)
+        {
+            if (Service.MovementLock?.Locked == true) Service.MovementLock.Unlock();
+            return;
+        }
 
         var currentState = Service.BaitManager.FishingState;
+
+        var shouldLock = Service.Configuration.LockMovementWhileFishing
+                         && currentState != FishingState.None
+                         && Player.Job is ECommons.ExcelServices.Job.FSH;
+        if (shouldLock && !Service.MovementLock.Locked) Service.MovementLock.Lock();
+        else if (!shouldLock && Service.MovementLock.Locked) Service.MovementLock.Unlock();
+
         if (currentState == FishingState.None)
         {
             if (Service.Configuration.AutoStartFishing && EzThrottler.Throttle("AutoStartFishing", 1000))
